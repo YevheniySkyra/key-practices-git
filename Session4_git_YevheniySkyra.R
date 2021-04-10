@@ -1,20 +1,51 @@
-#session4_git
-# 1. Set up your project by loading your packages, e.g.:
-library(package)
+  #------------------Script Header----------------------------------######
+# Date:         10.04.2021
+# Author:       Yevheniy Skyra
+# Filename:     Session4_git_YevheniySkyra.R
+# Description:  Code to be submitted as an assigment for the KPLS session5 "Best practices in R".
+#               Code aimes to adopt some of the practices presented during the session.
+#  
+# IMPRS Course: Key Practices for LAnguage Scientists Spring 2021  
+#------------------------------------------------------------------------------------------------###  
 
-# 2. Set the working directory and load the data, e.g.:
+    
+#----- Library declarations----------------------------------------#####
+library(package)
+library(package)
+library(package)
+library(package)
+#------------------------------------------------------------------#####
+
+    
+  
+#----- Loading Data  ---------------------------------------------#####
 setwd("directory")
 data <- read.delim("data.csv", header = TRUE, sep = ",")
+#------------------------------------------------------------------#####
 
-# 3. Make variables ready to work on, e.g.:
+
+
+#----- Data Processing --------------------------------------------#####
 data <- data %>%
   select(ppID, condition, trial, RT) %>%
-  mutate(condition = as.factor(condition), target = as.factor(target))
+        mutate(sCondition = as.factor(condition), 
+               sPpID      = as.factor(ppID),
+               sTrial     = as.factor(trial),
+               iRT        = as.numeric(RT))
+
 data <- na.omit(data)
+#-------------------------------------------------------------------#####
 
-# 4. Explore data, e.g.:
+
+#----- Data Exploration --------------------------------------------#####
+
 summary(data)
+#------------------------------------------------------------------#####
 
-# 5. Analysis (can be a simple analysis), e.g. a one-way ANOVA, within-subjects:
+
+#----- Data Analysis --------------------------------------------#####
+
 anovaRTbycategory <- aov(RT ~category+error(ppID/category), data = analysis_anova)
 summary(anovaRTbycategory)
+#-----------------------------------------------------------------#####
+
